@@ -1,0 +1,21 @@
+node_modules
+lerna-debug.log
+npm-debug.log
+dist
+packages/demo-web/lib
+.webpack
+.serverless
+.build
+.local
+
+# IDEs
+.idea
+.vscode
+.DS_Store
+yarn-error.log
+schema.gql
+
+.env.*
+.old
+
+benchmark/**/*.png

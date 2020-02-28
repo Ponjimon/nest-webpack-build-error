@@ -1,0 +1,167 @@
+{
+    "name": "nest-webpack-build-error",
+    "version": "1.0.0",
+    "private": true,
+    "license": "MIT",
+    "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build --webpack --webpackPath webpack.config.ts --path tsconfig.json",
+    "start": "node dist/main"
+    },
+    "dependencies": {
+        "@nestjs/common": "^6.3.1",
+        "@nestjs/core": "^6.3.1"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^8.3.5",
+        "@commitlint/config-conventional": "^8.3.4",
+        "@types/node": "^13.1.0",
+        "@typescript-eslint/eslint-plugin": "^2.21.0",
+        "@typescript-eslint/parser": "^2.21.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-import-resolver-typescript": "^2.0.0",
+        "eslint-plugin-import": "^2.20.1",
+        "eslint-plugin-nestjs": "^1.2.3",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-sort-class-members": "^1.6.0",
+        "husky": "^4.2.3",
+        "lerna": "^3.15.0",
+        "lint-staged": "^10.0.8",
+        "prettier": "^1.19.1",
+        "rimraf": "^3.0.2",
+        "ts-node": "^8.6.2",
+        "typescript": "^3.7.3",
+        "@nestjs/cli": "^6.14.2",
+        "@nestjs/schematics": "^6.9.4",
+        "chalk": "^3.0.0",
+        "just-wait": "^1.0.11",
+        "npm-run-all": "^4.1.5",
+        "progress-bar-webpack-plugin": "^2.1.0",
+        "ts-loader": "^6.2.1",
+        "tsconfig-paths": "^3.9.0",
+        "tsconfig-paths-webpack-plugin": "^3.2.0",
+        "webpack": "^4.41.6",
+        "webpack-bundle-analyzer": "^3.6.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-loader-helper": "^1.0.0",
+        "webpack-node-externals": "^1.7.2"
+    },
+    "prettier": {
+      "trailingComma": "es5",
+      "singleQuote": true,
+      "semi": true,
+      "parser": "typescript"
+    },
+    "commitlint": {
+      "extends": [
+        "@commitlint/config-conventional"
+      ]
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged",
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    },
+    "lint-staged": {
+      "*.{js,jsx,ts,tsx}": [
+        "prettier --write",
+        "eslint --fix",
+        "git add"
+      ]
+    },
+    "jest": {
+      "preset": "ts-jest",
+      "testEnvironment": "node",
+      "testPathIgnorePatterns": [
+        "/node_modules/",
+        "./dist"
+      ],
+      "coverageReporters": [
+        "lcov",
+        "html"
+      ],
+      "moduleNameMapper": {
+        "^~(.*)$": "<rootDir>/src/$1"
+      }
+    },
+    "eslintConfig": {
+      "settings": {
+        "import/resolver": {
+          "typescript": {}
+        }
+      },
+      "parser": "@typescript-eslint/parser",
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "tsconfigRootDir": "./src"
+      },
+      "plugins": [
+        "import",
+        "prettier",
+        "sort-class-members"
+      ],
+      "rules": {
+        "prettier/prettier": "error",
+        "@typescript-eslint/no-parameter-properties": 0,
+        "@typescript-eslint/interface-name-prefix": 0,
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "@typescript-eslint/explicit-member-accessibility": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-use-before-define": [
+          "error",
+          {
+            "functions": false
+          }
+        ],
+        "prefer-arrow-callback": "error",
+        "prefer-const": "error",
+        "prefer-destructuring": [
+          "error",
+          {
+            "array": true,
+            "object": true
+          }
+        ],
+        "curly": "error",
+        "dot-notation": "error",
+        "sort-imports": 0,
+        "no-plusplus": [
+          2,
+          {
+            "allowForLoopAfterthoughts": true
+          }
+        ],
+        "import/order": 1,
+        "import/default": 0,
+        "import/named": 0,
+        "import/no-named-as-default-member": 0,
+        "sort-class-members/sort-class-members": [
+          1,
+          {
+            "order": [
+              "[static-properties]",
+              "[static-methods]",
+              "[properties]",
+              "[conventional-private-properties]",
+              "constructor",
+              "[methods]",
+              "[conventional-private-methods]"
+            ],
+            "accessorPairPositioning": "getThenSet"
+          }
+        ]
+      }
+    }
+  }
+  
